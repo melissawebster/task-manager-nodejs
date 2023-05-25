@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-image: linear-gradient(to right, #31307c, #3e4194, #31307c);
+    color: #FFF;
+}
+
+.header {
+    margin-top: 60px;
+    background-color: rgba(0, 0, 0, 0.332);
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #ffea00;
+    margin-top: 0px;
+    padding: 10px 0px 10px 0px;
+}
+
+.task-list {
+    margin-left: auto;
+    margin-right: auto;
+}
