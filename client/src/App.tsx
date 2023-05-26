@@ -16,11 +16,11 @@ function App(): JSX.Element {
   return (
     <body>
 
-      <div className="container text-center border">
+      <div className="container-header text-center py-3">
       <h1>Task Manager</h1>
       </div>
 
-      <div className="container text-center border">
+      <div className="container-list text-center py-3">
         {data ? (
           <ul>
             {data.map((task: any) => (
@@ -32,7 +32,7 @@ function App(): JSX.Element {
         )}
       </div>
 
-      <div className="container text-center border">
+      <div className="container text-center">
         <button className="btn btn-primary">Adicionar +</button>
       </div>
 
@@ -41,62 +41,3 @@ function App(): JSX.Element {
 }
 
 export default App;
-
-
-
-/*
-import { useState } from 'react'
-import Task from './components/task'
-import './App.css'
-
-function App() {
-  let [tasks, setTasks] = useState([])
-
-  const addTask = () => {
-    const name = prompt('Task name: ')
-    const newTask = {
-      id: Math.floor(1000 * Math.random() + 1), /*generates random id number
-      name,
-      done: false
-    }
-    setTasks((currentState) => [...currentState, newTask])
-  }
-
-  const removeTask = (taskId) => {
-    setTasks(currentState => (
-      currentState.filter(task => task.id !== taskId)
-    ))
-  }
-
-  return (
-    <body>
-      <main>
-        <div className="header">
-        <h1>Daily Planner</h1>
-        </div>
-        
-
-        <div className="list">
-          <h2>Tasks for today:</h2>
-          <ul>
-          {/*use map instead of if else, etc}
-            {tasks.map(task => 
-            <Task
-              key={task.id}
-              task={task}
-              removeTask={removeTask}
-            /> 
-          )}
-            
-          </ul>
-          
-          <button onClick={addTask}>Add</button>
-        </div>
-      </main> 
-    </body>
-    
-  )
-}
-
-export default App
-*/

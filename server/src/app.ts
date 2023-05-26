@@ -4,16 +4,19 @@ import cors from 'cors';
 const app = express();
 const port = 5000;
 app.use(cors())
+app.use(express.json());
 
 let tasks = [
-    { id: 1, titulo: "Aprender React", concluida: true },
-    { id: 2, titulo: "Estudar NodeJS", concluida: false },
-    { id: 3, titulo: "Praticar TypeScript", concluida: false }
+    { id: 1, name: "Aprender React", done: true },
+    { id: 2, name: "Estudar NodeJS", done: false },
+    { id: 3, name: "Praticar TypeScript", done: false }
 ];
 
 
 app.get('/api/tasks', (req: Request, res: Response) => {
-    res.json(tasks);
+  const newTask = req.body;
+  tasks.push(newTask);
+  res.status(201).json(newTask);
 });
   
 

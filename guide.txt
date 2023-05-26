@@ -1,0 +1,90 @@
+
+
+
+REACT:
+
+Por default, componentes são nome nomeados capitalizados, ex: Task
+
+NODE.JS:
+
+Se o HTML do seu app React está sendo exibido por apenas um segundo e depois desaparece, é provável que isso esteja relacionado ao comportamento padrão de um evento de formulário, como o envio de um formulário.
+
+
+
+TECNOLOGIAS NO NODEJS:
+
+CORS
+
+
+TECNOLOGIAS NO REACT:
+
+Bootstrap
+Axios
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './App.css'
+import axios from 'axios';
+
+function App() {
+  const [data, setTasks] = useState<any>(null);
+  /*let [tasks, setTasks] = useState([])*/
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/tasks')
+      .then(response => response.json())
+      .then(jsonData => setTasks(jsonData))
+      .catch(error => console.log(error));
+  }, []);
+
+  const handleAddTask = () => {
+    const name = prompt('Task name: ')
+    
+    const newTask = {
+      id: Math.floor(1000 * Math.random() + 1), 
+      name,
+      done: false
+    }
+    setTasks((currentState) => [...currentState, newTask])
+
+    axios
+      .post('http://localhost:5000/api/tasks', { name: name, done: false  })
+    
+  }
+
+  return (
+    <body>
+      <div className="container text-center border">
+      <h1>Task Manager</h1>
+      </div>
+
+      <div className="container text-center border">
+        {data ? (
+          <ul>
+            {data.map((task) => (
+              <li>{task.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+
+      <div className="container text-center border">
+        <button className="btn btn-primary" onClick={handleAddTask}>Add</button>
+      </div>
+
+    </body>
+  );
+}
+
+export default App;
+
+
+
+
