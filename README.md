@@ -1,11 +1,11 @@
 Task Manager App
 
-CLIENT
+CLIENT |
 React.js
 Bootstrap/SASS
 Vite
 
-SERVER
+SERVER |
 Node.js
 Express
 Cors
