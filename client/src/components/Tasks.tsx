@@ -5,6 +5,7 @@ import '../App.css'
 
 function Tasks(props): JSX.Element {
     const [data, setData] = useState<any>(null);
+    const [newTask, setNewTask] = useState<string>('');
 
     useEffect(() => {
       fetch('http://localhost:5000/api/tasks')
@@ -13,15 +14,29 @@ function Tasks(props): JSX.Element {
         .catch(error => console.log(error));
     }, []);  
 
+    const handleAddTask = () => {
+        const taskName = prompt('Enter the task name:');
+        if (taskName) {
+          setNewTask(taskName);
+        }
+      };
+
     return (
         <div>
-            <div className="container-list text-center py-3">
+            <div className="container-list text-center py-4">
 
                 {data ? (
                     <ul>
-                    {data.map((task: any) => (
-                        <li>{task.name}</li>
-                    ))}
+                        {data.map((task: any) => (
+                            <li key={task.id}>
+                                <input type="checkbox" /> {task.name}
+                            </li>
+                        ))}
+                        {newTask && (
+                            <li>
+                                <input type="checkbox" /> {newTask}
+                            </li>
+                        )}
                     </ul>
                 ) : (
                     <p>Loading...</p>
@@ -29,7 +44,7 @@ function Tasks(props): JSX.Element {
             </div>
 
             <div className="container text-center">
-                <button className="btn btn-primary">Adicionar +</button>
+                <button className="btn btn-primary" onClick={handleAddTask}>Add task</button>
             </div>
         </div>
     )
