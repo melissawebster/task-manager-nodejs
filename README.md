@@ -2,7 +2,7 @@ Task Manager App (em desenvolvimento)
 
 CLIENT |
 React.js
-Bootstrap/SASS
+Bootstrap/SCSS
 Vite
 
 SERVER |
